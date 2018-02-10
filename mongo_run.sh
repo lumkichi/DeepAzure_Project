@@ -22,6 +22,15 @@ fi
 # duration of the run.
 sudo mv /usr/hdp/2.6.2.3-1/hadoop/lib/slf4j-log4j12-1.7.10.jarx /usr/hdp/2.6.2.3-1/hadoop/lib/slf4j-log4j12-1.7.10.jar  2>/dev/null
 
+# If the data file exists in the $ROOT/data folder as a gzipped file,
+# unzip it before proceeding
+if [ -e ~/$ROOT/data/RXBC_20180122_INSERT_EXTRACT.dat.gz ]
+then
+  cd ~/$ROOT/data/
+  gunzip RXBC_20180122_INSERT_EXTRACT.dat.gz
+  cd ~/$ROOT/
+fi
+
 # Copy the input file to the HDFS system
 hdfs dfs -mkdir -p /user/hadoop/mongo_input
 hdfs dfs -put ~/$ROOT/data/RXBC_20180122_INSERT_EXTRACT.dat /user/hadoop/mongo_input

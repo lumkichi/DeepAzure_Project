@@ -1,0 +1,12 @@
+az group deployment create --name lummyhd ^
+--resource-group lummyrg ^
+--template-file lummyhd-template.json ^
+--parameters lummyhd-parameters.json ^
+--output table
+
+az group deployment create --name lummymongo ^
+--resource-group lummyrg ^
+--template-file lummymongo-template.json ^
+--parameters lummymongo-parameters.json ^
+--output table
+
